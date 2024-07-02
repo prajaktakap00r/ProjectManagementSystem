@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NewProject from "./components/NewProject";
 import NoProjectSelect from "./components/NoProjectSelect";
 import SideBar from "./components/SideBar";
 import { v4 as uuidv4 } from "uuid";
 import SelectedProject from "./components/SelectedProject";
-import EditProject from "./components/EditProject"; // Import the new component
+import EditProject from "./components/EditProject";
+import "./App.css"; // Ensure this imports your CSS
 
 export default function App() {
   const [selectedProject, setSelectedProject] = useState({
@@ -13,7 +14,7 @@ export default function App() {
     tasks: [],
   });
 
-  const [isEditing, setIsEditing] = useState(false); // New state for editing mode
+  const [isEditing, setIsEditing] = useState(false);
 
   function handleAddTask(text) {
     setSelectedProject((prev) => {
@@ -137,15 +138,15 @@ export default function App() {
     <div
       className="bg-cover bg-center h-200vh"
       /*  style={{
-      backgroundImage: `url(${bg})`,
-    }} */
+    backgroundImage: `url(${bg})`,
+  }} */
+
       style={{
-        backgroundImage:
-          "url('https://img.freepik.com/premium-photo/blue-wave-is-lit-up-black-background_889227-20579.jpg')",
+        backgroundImage: `url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/41611b21-a7ce-419b-bc77-4644f8105930/ddw9lh3-0e4cc0de-530c-4d4b-a5a7-ad495c8e561c.png/v1/fill/w_1600,h_1200,q_80,strp/black_and_blue_gradient_background_by_therprtnetwork_ddw9lh3-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTIwMCIsInBhdGgiOiJcL2ZcLzQxNjExYjIxLWE3Y2UtNDE5Yi1iYzc3LTQ2NDRmODEwNTkzMFwvZGR3OWxoMy0wZTRjYzBkZS01MzBjLTRkNGItYTVhNy1hZDQ5NWM4ZTU2MWMucG5nIiwid2lkdGgiOiI8PTE2MDAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.tykGF1Nh0wTAhKrFEpcAZYrK8odM474o-1LC_WMyxQg')`,
       }}
       //style={{ backgroundColor: "black" }}
     >
-      <main className="h-screen my-1 flex gap-8">
+      <main className="flex h-screen gap-8 relative">
         <SideBar
           onStartAdd={handleStartAddProject}
           projects={selectedProject.projects}

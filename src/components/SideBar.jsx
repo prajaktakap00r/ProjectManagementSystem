@@ -1,3 +1,4 @@
+import "./Styles.css";
 import Button from "./Button";
 
 export default function SideBar({
@@ -8,18 +9,13 @@ export default function SideBar({
 }) {
   return (
     <div
-      className="bg-cover bg-center h-200vh"
-      /*  style={{
-      backgroundImage: `url(${bg})`,
-    }} */
+      className="bg-cover bg-center min-h-screen rounded-md"
       style={{
-        backgroundImage:
-          "url('https://w0.peakpx.com/wallpaper/631/139/HD-wallpaper-up-and-down-slices-art-moon-blue-round-black-yellow-circles.jpg')",
+        backgroundImage: `url('https://w0.peakpx.com/wallpaper/831/267/HD-wallpaper-black-blue-abstract-dark-note-waves-background.jpg')`,
       }}
-      //style={{ backgroundColor: "black" }}
     >
-      <aside className="w-1/3 px-8 py-16 md:w-72 rounded-r-xl my-4">
-        <h1 className="mb-8 font-bold uppercase md:text-xl text-blue-500 text-center">
+      <aside className="w-full md:w-72 px-4 py-8 md:px-8 md:py-16 rounded-r-xl  border-r-2 border-blue-400 h-[43.3rem] bg-transparent overflow-y-auto scrollbar-hide">
+        <h1 className="mb-8 font-bold uppercase text-center text-xl md:text-xl text-red-600">
           SideBar
         </h1>
         <div className="flex justify-center mb-4">
@@ -30,9 +26,9 @@ export default function SideBar({
             let cssClass = "w-full text-left px-2 py-1 rounded-md my-2 ";
             if (project.id === selectedProjectId) {
               cssClass +=
-                "bg-orange-600 text-pink-200 hover:text-pink-600 hover:bg-white";
+                "bg-white text-black hover:text-blue-600 hover:bg-white shadow-md shadow-red-500";
             } else {
-              cssClass += "text-orange-300 bg-black";
+              cssClass += "text-white bg-red-600";
             }
             return (
               <li key={project.id}>

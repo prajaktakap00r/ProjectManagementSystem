@@ -134,14 +134,26 @@ export default function App() {
   }
 
   return (
-    <main className="h-screen my-8 flex gap-8">
-      <SideBar
-        onStartAdd={handleStartAddProject}
-        projects={selectedProject.projects}
-        onSelectProject={handleSelectedProject}
-        selectedProjectId={selectedProject.selectedProjectId}
-      />
-      {content}
-    </main>
+    <div
+      className="bg-cover bg-center h-200vh"
+      /*  style={{
+      backgroundImage: `url(${bg})`,
+    }} */
+      style={{
+        backgroundImage:
+          "url('https://img.freepik.com/premium-photo/blue-wave-is-lit-up-black-background_889227-20579.jpg')",
+      }}
+      //style={{ backgroundColor: "black" }}
+    >
+      <main className="h-screen my-1 flex gap-8">
+        <SideBar
+          onStartAdd={handleStartAddProject}
+          projects={selectedProject.projects}
+          onSelectProject={handleSelectedProject}
+          selectedProjectId={selectedProject.selectedProjectId}
+        />
+        {content}
+      </main>
+    </div>
   );
 }

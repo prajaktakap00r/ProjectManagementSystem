@@ -42,7 +42,10 @@ export default function EditProject({ project, onEdit, onCancel }) {
           Please make sure you provide a valid value for each input field
         </p>
       </Modal>
-      <form onSubmit={handleSubmit} className="w-[35rem] mt-16">
+      <form
+        onSubmit={handleSubmit}
+        className="w-[35rem] mt-16  overflow-auto scrollbar-hide mx-auto"
+      >
         <menu className="flex items-center justify-end gap-4 my-4">
           <li>
             <Button onClick={onCancel}>Cancel</Button>

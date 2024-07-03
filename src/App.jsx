@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import NewProject from "./components/NewProject";
 import NoProjectSelect from "./components/NoProjectSelect";
 import SideBar from "./components/SideBar";
@@ -11,22 +11,23 @@ export default function App() {
   const [selectedProject, setSelectedProject] = useState({
     selectedProjectId: undefined,
     projects: [],
-    tasks: [],
   });
-
+  useEffect(() => {
+    localStorage.setItem("project", selectedProject);
+  }, [selectedProject]);
   const [isEditing, setIsEditing] = useState(false);
 
   function handleAddTask(text) {
     setSelectedProject((prev) => {
       const taskId = uuidv4();
-      const newTask = {
-        text: text,
-        projectId: prev.selectedProjectId,
-        id: taskId,
-      };
+      const newTask = { text, id: taskId };
       return {
         ...prev,
-        tasks: [...prev.tasks, newTask],
+        projects: prev.projects.map((project) =>
+          project.id === prev.selectedProjectId
+            ? { ...project, tasks: [...project.tasks, newTask] }
+            : project
+        ),
       };
     });
   }
@@ -35,7 +36,14 @@ export default function App() {
     setSelectedProject((prev) => {
       return {
         ...prev,
-        tasks: prev.tasks.filter((task) => task.id !== taskId),
+        projects: prev.projects.map((project) =>
+          project.id === prev.selectedProjectId
+            ? {
+                ...project,
+                tasks: project.tasks.filter((task) => task.id !== taskId),
+              }
+            : project
+        ),
       };
     });
   }
@@ -56,10 +64,7 @@ export default function App() {
   function handleSelectedProject(id) {
     setIsEditing(false);
     setSelectedProject((prev) => {
-      return {
-        ...prev,
-        selectedProjectId: id,
-      };
+      return { ...prev, selectedProjectId: id };
     });
   }
 
@@ -74,17 +79,12 @@ export default function App() {
       };
     });
   }
-  function handleCancelProject() {
-    setSelectedProject((prev) => {
-      return { ...prev, selectedProjectId: undefined };
-    });
-    setIsEditing(false);
-  }
 
   function handleNewProject(projectData) {
     const newProject = {
       ...projectData,
       id: uuidv4(),
+      tasks: [],
     };
     setSelectedProject((prev) => {
       return {
@@ -134,7 +134,7 @@ export default function App() {
         onDelete={handleDeleteProject}
         onAddTask={handleAddTask}
         onDeleteTask={handleDeleteTask}
-        tasks={selectedProject.tasks}
+        tasks={selectProject.tasks}
         onEdit={() => setIsEditing(true)}
         onCancel={handleCancelProject}
       />
@@ -142,18 +142,16 @@ export default function App() {
   }
 
   return (
-    <div
-      className="bg-cover bg-center h-200vh"
-      /*  style={{
-    backgroundImage: `url(${bg})`,
-  }} */
-
-      style={{
-        backgroundImage: `url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/41611b21-a7ce-419b-bc77-4644f8105930/ddw9lh3-0e4cc0de-530c-4d4b-a5a7-ad495c8e561c.png/v1/fill/w_1600,h_1200,q_80,strp/black_and_blue_gradient_background_by_therprtnetwork_ddw9lh3-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTIwMCIsInBhdGgiOiJcL2ZcLzQxNjExYjIxLWE3Y2UtNDE5Yi1iYzc3LTQ2NDRmODEwNTkzMFwvZGR3OWxoMy0wZTRjYzBkZS01MzBjLTRkNGItYTVhNy1hZDQ5NWM4ZTU2MWMucG5nIiwid2lkdGgiOiI8PTE2MDAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.tykGF1Nh0wTAhKrFEpcAZYrK8odM474o-1LC_WMyxQg')`,
-      }}
-      //style={{ backgroundColor: "black" }}
-    >
-      <main className="flex h-screen gap-8 relative">
+    <div className="relative h-screen">
+      <div
+        className="absolute inset-0 bg-cover bg-center h-full backdrop-blur-sm"
+        style={{
+          backgroundImage: `url('https://wallpaper.dog/large/10969106.jpg')`,
+          filter: "blur(10px)",
+          WebkitFilter: "blur(10px)",
+        }}
+      ></div>
+      <main className="relative z-10 flex h-full gap-8">
         <SideBar
           onStartAdd={handleStartAddProject}
           projects={selectedProject.projects}

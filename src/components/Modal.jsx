@@ -16,11 +16,11 @@ const Modal = forwardRef(function Modal({ children, buttonCaption }, ref) {
   return createPortal(
     <dialog
       ref={dialog}
-      className="backdrop:bg-stone-900/90 p-4 rounded-md shadow-md border-red-500 border-2 bg-black"
+      className="backdrop:bg-stone-900/90 p-4 rounded-md shadow-md border-blue-500 border-2 bg-black shadow-blue-500"
     >
       {children}
       <form method="dialog" className="mt-4 text-right">
-        <button className="px-4 py-2 text-xs md:text-base rounded-md text-pink-200 bg-red-600 hover:bg-pink-50 hover:text-red-600">
+        <button className="px-4 py-2 text-xs md:text-base rounded-md text-white bg-blue-600 hover:shadow-white shadow-md">
           {buttonCaption}
         </button>
       </form>

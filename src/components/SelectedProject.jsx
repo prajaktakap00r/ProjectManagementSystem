@@ -1,5 +1,6 @@
 import Button from "./Button";
 import Tracking from "./Tracking";
+import "./Styles.css";
 
 export default function SelectedProject({
   project,
@@ -17,20 +18,20 @@ export default function SelectedProject({
   });
 
   return (
-    <div className="w-[35rem] mt-16">
-      <header className="pb-4 mb-4 border-b-2 border-orange-500">
+    <div className="w-[35rem] mt-16 overflow-auto scrollbar-hide mx-auto">
+      <header className="pb-4 mb-4 border-b-2 border-yellow-500">
         <div className="flex items-center justify-between">
-          <h1 className="text-3xl font-bold text-pink-500 mb-2 uppercase">
+          <h1 className="text-3xl font-bold text-white mb-2 uppercase">
             {project.title}
           </h1>
           <div className="flex">
             <Button onClick={onDelete}>Delete Project</Button>
             <Button onClick={onEdit}>Edit Project</Button>
-            <Button onClick={onCancel}>Cancel</Button>
+            <Button onClick={onCancel}>Save</Button>
           </div>
         </div>
-        <p className="mb-4 text-orange-400">{formattedDate}</p>
-        <p className=" text-pink-100 whitespace-pre-wrap">
+        <p className="mb-4 text-blue-400">{formattedDate}</p>
+        <p className="text-pink-100 whitespace-pre-wrap">
           {project.description}
         </p>
       </header>

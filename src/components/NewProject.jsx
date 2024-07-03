@@ -31,17 +31,17 @@ export default function NewProject({ onAdd, onCancel }) {
   return (
     <>
       <Modal ref={modal} buttonCaption="Close">
-        <h2 className="text-xl text-bold mt-4 text-pink-500 my-4 ">
+        <h2 className="text-xl text-bold mt-4 text-blue-500 my-4 ">
           INVALID INPUT
         </h2>
-        <p className="mb-4 text-pink-100 italic">
+        <p className="mb-4 text-blue-100 italic">
           Opps...Looks like you forgot to enter a Value
         </p>
-        <p className="mb-4 text-pink-100 italic">
+        <p className="mb-4 text-blue-100 italic">
           Please make sure you provide a valid value for each input field
         </p>
       </Modal>
-      <div className="w-[35rem] mt-16">
+      <div className=" w-[35rem] mt-16 overflow-auto scrollbar-hide mx-auto">
         <menu className="flex items-center justify-end gap-4 my-4">
           <li>
             <Button onClick={onCancel}>Cancel</Button>

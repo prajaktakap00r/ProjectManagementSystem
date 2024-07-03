@@ -21,25 +21,27 @@ export default function NewTask({ onAdd }) {
   return (
     <>
       <Modal ref={modalRef} buttonCaption="Close">
-        <h2 className="text-xl text-bold mt-4 text-pink-500 my-4">
+        <h2 className="text-xl text-bold mt-4 text-white my-4 uppercase">
           INVALID INPUT
         </h2>
-        <p className="mb-4 text-pink-100 italic">
+        <hr className="border-blue-500"></hr>
+        <p className="mb-4 text-white italic">
           Oops...Looks like you forgot to enter a value.
         </p>
-        <p className="mb-4 text-pink-100 italic">
+        <p className="mb-4 text-white italic">
           Please make sure you provide a valid value for each input field.
         </p>
+        <hr className="border-blue-500"></hr>
       </Modal>
       <div className="flex items-center gap-4">
         <input
           type="text"
-          className="w-64 px-2 py-1 rounded-sm bg-pink-100"
+          className="w-64 px-2 py-1 rounded-sm bg-white"
           onChange={handleTask}
           value={enteredTask}
         />
         <button
-          className="text-orange-400 hover:text-pink-500"
+          className="text-white text-bold rounded-md bg-yellow-500 m-2 p-1"
           onClick={handleClick}
         >
           Add Task

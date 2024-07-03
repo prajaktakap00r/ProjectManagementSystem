@@ -28,4 +28,16 @@ body {
       opacity: 1;
     }
   }
+  .background-blur {
+    background-image: url('https://wallpaper.dog/large/10969106.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px);
+    height: 200vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
   

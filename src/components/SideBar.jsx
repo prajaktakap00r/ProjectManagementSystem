@@ -10,9 +10,10 @@ export default function SideBar({
   return (
     <div
       className="bg-cover bg-center min-h-screen rounded-md"
-      style={{
+      /* style={{
         backgroundImage: `url('https://w0.peakpx.com/wallpaper/831/267/HD-wallpaper-black-blue-abstract-dark-note-waves-background.jpg')`,
-      }}
+      }} */
+      style={{ background: "transparent" }}
     >
       <aside className="w-full md:w-72 px-4 py-8 md:px-8 md:py-16 rounded-r-xl  border-r-2 border-blue-400 h-[43.3rem] bg-transparent overflow-y-auto scrollbar-hide">
         <h1 className="mb-8 font-bold uppercase text-center text-xl md:text-xl text-white">

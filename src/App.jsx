@@ -7,14 +7,32 @@ import SelectedProject from "./components/SelectedProject";
 import EditProject from "./components/EditProject";
 import "./App.css"; // Ensure this imports your CSS
 
+const getLocalItems = () => {
+  let list = localStorage.getItem("project");
+  if (list) {
+    return JSON.parse(list);
+  } else {
+    return {
+      selectedProjectId: undefined,
+      projects: [],
+    };
+  }
+};
+
 export default function App() {
-  const [selectedProject, setSelectedProject] = useState({
-    selectedProjectId: undefined,
-    projects: [],
-  });
+  const [selectedProject, setSelectedProject] = useState(getLocalItems);
+
+  const removeAll = () => {
+    setSelectedProject({
+      selectedProjectId: undefined,
+      projects: [],
+    });
+  };
+
   useEffect(() => {
-    localStorage.setItem("project", selectedProject);
+    localStorage.setItem("project", JSON.stringify(selectedProject));
   }, [selectedProject]);
+
   const [isEditing, setIsEditing] = useState(false);
 
   function handleAddTask(text) {

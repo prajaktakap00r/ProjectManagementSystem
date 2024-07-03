@@ -1,7 +1,6 @@
 import Button from "./Button";
 import Tracking from "./Tracking";
 import "./Styles.css";
-
 export default function SelectedProject({
   project,
   onDelete,
@@ -18,7 +17,7 @@ export default function SelectedProject({
   });
 
   return (
-    <div className="w-[35rem] mt-16 overflow-auto scrollbar-hide mx-auto">
+    <div className="w-[35rem] mt-16 overflow-auto scrollbar-hide ">
       <header className="pb-4 mb-4 border-b-2 border-yellow-500">
         <div className="flex items-center justify-between">
           <h1 className="text-3xl font-bold text-white mb-2 uppercase">
@@ -31,7 +30,7 @@ export default function SelectedProject({
           </div>
         </div>
         <p className="mb-4 text-blue-400">{formattedDate}</p>
-        <p className="text-pink-100 whitespace-pre-wrap">
+        <p className=" text-pink-100 whitespace-pre-wrap">
           {project.description}
         </p>
       </header>

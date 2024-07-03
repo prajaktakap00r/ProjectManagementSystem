@@ -15,8 +15,8 @@ export default function SideBar({
       }}
     >
       <aside className="w-full md:w-72 px-4 py-8 md:px-8 md:py-16 rounded-r-xl  border-r-2 border-blue-400 h-[43.3rem] bg-transparent overflow-y-auto scrollbar-hide">
-        <h1 className="mb-8 font-bold uppercase text-center text-xl md:text-xl text-red-600">
-          SideBar
+        <h1 className="mb-8 font-bold uppercase text-center text-xl md:text-xl text-white">
+          PRO PROJECT
         </h1>
         <div className="flex justify-center mb-4">
           <Button onClick={onStartAdd}>+ Add Project</Button>
@@ -26,9 +26,9 @@ export default function SideBar({
             let cssClass = "w-full text-left px-2 py-1 rounded-md my-2 ";
             if (project.id === selectedProjectId) {
               cssClass +=
-                "bg-white text-black hover:text-blue-600 hover:bg-white shadow-md shadow-red-500";
+                "uppercase bg-yellow-300 text-black  hover:bg-white transform hover:scale-105 transition-transform duration-500 ease-in-out ";
             } else {
-              cssClass += "text-white bg-red-600";
+              cssClass += "text-blue-500 bg-white uppercase";
             }
             return (
               <li key={project.id}>

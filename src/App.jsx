@@ -74,6 +74,12 @@ export default function App() {
       };
     });
   }
+  function handleCancelProject() {
+    setSelectedProject((prev) => {
+      return { ...prev, selectedProjectId: undefined };
+    });
+    setIsEditing(false);
+  }
 
   function handleNewProject(projectData) {
     const newProject = {
@@ -130,6 +136,7 @@ export default function App() {
         onDeleteTask={handleDeleteTask}
         tasks={selectedProject.tasks}
         onEdit={() => setIsEditing(true)}
+        onCancel={handleCancelProject}
       />
     );
   }

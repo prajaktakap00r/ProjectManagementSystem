@@ -8,12 +8,14 @@ export default function SelectedProject({
   onDeleteTask,
   tasks,
   onEdit,
+  onCancel,
 }) {
   const formattedDate = new Date(project.dueDate).toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",
     day: "numeric",
   });
+
   return (
     <div className="w-[35rem] mt-16">
       <header className="pb-4 mb-4 border-b-2 border-orange-500">
@@ -24,6 +26,7 @@ export default function SelectedProject({
           <div className="flex">
             <Button onClick={onDelete}>Delete Project</Button>
             <Button onClick={onEdit}>Edit Project</Button>
+            <Button onClick={onCancel}>Cancel</Button>
           </div>
         </div>
         <p className="mb-4 text-orange-400">{formattedDate}</p>
